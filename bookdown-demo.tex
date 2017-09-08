@@ -1,0 +1,454 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={A Minimal Book Example},
+            pdfauthor={Yihui Xie},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{A Minimal Book Example}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Yihui Xie}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2017-09-08}
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter{Prerequisites}\label{prerequisites}
+
+This is a \emph{sample} book written in \textbf{Markdown}. You can use
+anything that Pandoc's Markdown supports, e.g., a math equation
+\(a^2 + b^2 = c^2\).
+
+For now, you have to install the development versions of
+\textbf{bookdown} from Github:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"rstudio/bookdown"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Remember each Rmd file contains one and only one chapter, and a chapter
+is defined by the first-level heading \texttt{\#}.
+
+To compile this example to PDF, you need to install XeLaTeX.
+
+\chapter{Introduction}\label{intro}
+
+You can label chapter and section titles using \texttt{\{\#label\}}
+after them, e.g., we can reference Chapter \ref{intro}. If you do not
+manually label them, there will be automatic labels anyway, e.g.,
+Chapter \ref{methods}.
+
+Figures and tables with captions will be placed in \texttt{figure} and
+\texttt{table} environments, respectively.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{, .}\DecValTok{1}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{type =} \StringTok{'b'}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{bookdown-demo_files/figure-latex/nice-fig-1} 
+
+}
+
+\caption{Here is a nice figure!}\label{fig:nice-fig}
+\end{figure}
+
+Reference a figure by its code chunk label with the \texttt{fig:}
+prefix, e.g., see Figure \ref{fig:nice-fig}. Similarly, you can
+reference tables generated from \texttt{knitr::kable()}, e.g., see Table
+\ref{tab:nice-tab}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}
+  \KeywordTok{head}\NormalTok{(iris, }\DecValTok{20}\NormalTok{), }\DataTypeTok{caption =} \StringTok{'Here is a nice table!'}\NormalTok{,}
+  \DataTypeTok{booktabs =} \OtherTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:nice-tab}Here is a nice table!}
+\centering
+\begin{tabular}[t]{rrrrl}
+\toprule
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
+\midrule
+5.1 & 3.5 & 1.4 & 0.2 & setosa\\
+4.9 & 3.0 & 1.4 & 0.2 & setosa\\
+4.7 & 3.2 & 1.3 & 0.2 & setosa\\
+4.6 & 3.1 & 1.5 & 0.2 & setosa\\
+5.0 & 3.6 & 1.4 & 0.2 & setosa\\
+\addlinespace
+5.4 & 3.9 & 1.7 & 0.4 & setosa\\
+4.6 & 3.4 & 1.4 & 0.3 & setosa\\
+5.0 & 3.4 & 1.5 & 0.2 & setosa\\
+4.4 & 2.9 & 1.4 & 0.2 & setosa\\
+4.9 & 3.1 & 1.5 & 0.1 & setosa\\
+\addlinespace
+5.4 & 3.7 & 1.5 & 0.2 & setosa\\
+4.8 & 3.4 & 1.6 & 0.2 & setosa\\
+4.8 & 3.0 & 1.4 & 0.1 & setosa\\
+4.3 & 3.0 & 1.1 & 0.1 & setosa\\
+5.8 & 4.0 & 1.2 & 0.2 & setosa\\
+\addlinespace
+5.7 & 4.4 & 1.5 & 0.4 & setosa\\
+5.4 & 3.9 & 1.3 & 0.4 & setosa\\
+5.1 & 3.5 & 1.4 & 0.3 & setosa\\
+5.7 & 3.8 & 1.7 & 0.3 & setosa\\
+5.1 & 3.8 & 1.5 & 0.3 & setosa\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+You can write citations, too. For example, we are using the
+\textbf{bookdown} package \citep{R-bookdown} in this sample book, which
+was built on top of R Markdown and \textbf{knitr} \citep{xie2015}.
+
+\section{Purpose}\label{purpose}
+
+We aim to create a classification of spatial and other hierarchical data
+in R with tools for more general representations of spatial primitives
+and the intermediate forms required for translation and analytical
+tasks. The key is to provide a relational model of indexed primitives
+and component elements, as a bridge to the traditionally
+\emph{structural}, or \emph{array/matrix} indexing and storage used in
+computer graphics and gaming.
+
+A \textbf{path} can be treated as a first-class type and and stored as
+such within a relational model, along with the other entities
+\textbf{objects} (``features'') and \textbf{vertices}. with this
+approach we gain two advantages, we can \emph{normalize} the relations
+(detect and remove redundancy) and also store any additional data about
+the entitities in the model.
+
+(There is an interplay between ``able to store extra information'' and
+``able to normalize'', since extra data may introduce further
+redundancy, but we defer this issue for now since full normalization is
+not our primary task).
+
+This package provides two main schemes, the \texttt{PATH} and the
+\texttt{PRIMITIVE} models. The two models may be mutually exclusive, or
+they can co-exist. The PATH model can always be derived from the
+PRIMITIVE model and vice versa but the PRIMITIVE model has extra
+capacities that PATH cannot provide. (The current design is a
+distillation and improvement on previous implementations, see
+\texttt{mdsumner/gris} and \texttt{r-gris/rangl} for these earlier
+attempts).
+
+\chapter{Why?}\label{why}
+
+Geographic Information System (GIS) tools provide data structures
+optimized for a relatively narrow class of workflows that leverage a
+combination of \emph{spatial}, graphics, drawing-design, imagery,
+geodetic and database techniques. When modern GIS was born in the 1990s
+it adopted a set of compromises that divorced it from its roots in graph
+theory (arc-node topology) to provide the best performance for what were
+the most complicated sets of cartographic and land-management system
+data at the time.
+
+The huge success of ArcView and the shapefile brought this arcane domain
+into common usage and helped establish our modern view of what
+``geo-spatial data'' is. The creation of the ``simple features
+standard''" in the early 2000s formalized this modern view and provided
+a basis to avoid some of the inconsistencies and incompleteness that are
+present in the shapefile specification.
+
+(For some background, see here
+\url{http://www.esri.com/news/arcuser/0401/topo.html})
+
+Spatial, graphics, drawing-design, imagery, geodetic and database
+techniques are broader than any GIS, are used in combination in many
+fields, but no other field combines them in the way that GIS tools do.
+GIS does however impose a certain view point, a lens through which each
+of those very general fields is seen via the perspective of the
+optimizations, the careful constraints and compromises that were
+formalized in the early days.
+
+This lens is seen side-on when 1) bringing graphics data (images,
+drawings) into a GIS where a localization metadata context is assumed 2)
+attempting to visualize geo-spatial raster data with graphics tools 3)
+creating lines to represent the path of sensor platforms that record
+many variables like temperature, salinity, radiative flux as well as
+location in time and space.
+
+The word ``spatial'' has a rather general meaning, and while GIS idioms
+sometimes extend into the Z dimension time is usually treated in a
+special way. Where GIS really starts to show its limits is in the
+boundary between discrete and continuous measures and entities. We
+prefer to default to the most general meaning of spatial, work with
+tools that allow flexibility despite the (rather arbitrary) choice of
+topological and geometric structures and dimensions that a given model
+needs. When the particular optimizations and clever constraints of the
+simple features and GIS world are required and/or valuable then we use
+those, but prefer not to see that 1) this model must fit into this GIS
+view 2) GIS has no place in this model. For us the boundaries are not so
+sharp and there's valuable cross-over in many fields.
+
+The particular GIS-like limitations that we seek to overcome are as
+follows.
+
+\begin{itemize}
+\tightlist
+\item
+  flexibility in the number and type/s of attribute stored as
+  ``coordinates'', x, y, lon, lat, z, time, temperature, etc.
+\item
+  ability to store attributes on parts i.e.~the state is the object, the
+  county is the part
+\item
+  shared vertices
+\item
+  the ability to leverage topology engines like D3 to dynamically
+  segmentize a piecewise graph using geodetic curvature
+\item
+  the ability to extend the hierarchical view in GIS to 3D, 4D spatial,
+  graphical, network and general modelling domains
+\item
+  clarity on the distinction between topology and geometry
+\item
+  clarity on the distinction between vector and raster data, without
+  having an arbitrary boundary between them
+\item
+  multiple models of raster \texttt{georeferencing} from basic
+  offset/scale, general affine transform, full curvilinear and partial
+  curvilinear with affine and rectilinear optimizations where applicable
+\item
+  ability to store points, lines and areas together, with shared
+  topology as appropriate
+\item
+  a flexible and powerful basis for conversion between formats both in
+  the GIS idioms and outside them
+\item
+  flexibility, ease-of-use, composability, modularity, tidy-ness
+\item
+  integration with specialist computational engines, database systems,
+  geometric algorithms, drawing tools and other systems
+\item
+  interactivity, integration with D3, shiny, ggplot2, ggvis, leaflet
+\item
+  scaleability, the ability to leverage back-end databases, specialist
+  parallelism engines, remote compute and otherwise distributed compute
+  systems
+\end{itemize}
+
+Flexibility in attributes generally is the key to breaking out of
+traditional GIS constraints that don't allow clear continuous / discrete
+distinctions, or time-varying objects/events, 3D/4D geometry, or clarity
+on topology versus geometry. When everything is tables this becomes
+natural, and we can build structures like link-relations between tables
+that transfer data only when required.
+
+The ability many GIS tools from R in a consistent way is long-term goal,
+and this will be best done via dplyr ``back-ending'' or a model very
+like it.
+
+\chapter{Approach}\label{approach}
+
+We can't possibly provide all the aspirations detailed above, but we
+hope to
+
+\begin{itemize}
+\tightlist
+\item
+  demonstrate the clear need, interest and opportunities that currently
+  exist for fostering their development
+\item
+  illustrate links between existing systems that from a slightly
+  different perspective become achievable goals rather than
+  insurmountable challenges
+\item
+  provide a platform for generalizing some of the currently fragmented
+  translations that occur across the R community between commonly used
+  tools that aren't formally speaking to each other.
+\item
+  provide tools that we build along the way
+\end{itemize}
+
+This package is intended to provide support to the \texttt{common\ form}
+approach described here. The package is not fully functional yet, but
+see these projects that are informed by this approach.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{rbgm} -
+  \href{https://github.com/AustralianAntarcticDivision/rbgm}{Atlantis
+  Box Geometry Model}, a ``doubly-connected edge-list'' form of linked
+  faces and boxes in a spatially-explicit 3D ecosystem model
+\item
+  \textbf{rangl} - \href{https://github.com/r-gris/rangl}{Primitives for
+  Spatial data}, a generalization of GIS forms with simple 3D plotting
+\item
+  \textbf{spbabel} -
+  \href{https://github.com/mdsumner/spbabel}{Translators for R Spatial},
+  tools to convert from and to spatial forms, provides the general
+  decomposition framework for paths, used by \texttt{rangl}
+\item
+  \textbf{sfct} - \href{https://github.com/r-gris/sfct}{Constrained
+  Triangulation for Simple Features} tools to decompose
+  \texttt{simple\ features} into (non-mesh-indexed) primitives.
+\end{itemize}
+
+\chapter{Applications}\label{applications}
+
+Some \emph{significant} applications are demonstrated in this chapter.
+
+\section{Example one}\label{example-one}
+
+\section{Example two}\label{example-two}
+
+\bibliography{packages.bib,book.bib}
+
+
+\end{document}

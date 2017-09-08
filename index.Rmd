@@ -1,0 +1,19 @@
+--- 
+title: "A Spatial Normal Form"
+author: "Michael Sumner"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is a description of the need for a spatial normal form."
+---
+
+# Preamble
+
+We are motivated by the unnecessary and unnatural distinctions made between the 
+concepts  used for spatial, geo-spatial, and graphics data. The removal of topology
+from "spatial" has been overly destructive and results in a lot of missed opportunities. 
