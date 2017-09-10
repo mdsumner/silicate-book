@@ -1,3 +1,5 @@
 _book
 _bookdown_files
 *.html
+.Rproj.user
+.Rproj.user/
