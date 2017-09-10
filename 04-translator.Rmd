@@ -1,4 +1,4 @@
-# Applications
+# Translators
 
 
 There are three low-level elements in planar shapes, they are coordinates, paths, and
@@ -171,13 +171,28 @@ library(sfdct)
 library(silicate)
 tri1 <- ct_triangulate(minimal_mesh)
 tri2 <- ct_triangulate(minimal_mesh, D = TRUE)
+
 plot(st_geometry(tri1), col = NA)
 plot(st_geometry(tri2), col = NA)
+
 ```
-polygons by constrained delaunay
+These plots are different because the *constrain* the triangles to share the edges with the input polygons the first
+algorithm actually broke the Delauanay condition to include the edges, then the second re-applied Delaunay by *trying harder*, but
+also by adding new points to the set - (see Shewchuk chapter 1 for details on what is provably known in 2D and 3D). 
 
 
+To build the  outlines for rgl we had to put them into `rgl::triangulate` which performs an ear-clipping method for this constrained triangulation, but to use the `RTriangle` triangulate we had to decompose them into edges, *and* remove duplicate coordinates. The wg matrix from rgl gives a hint above, but internally `sfdct` must perform both of these tasks. You can imagine that this kind of transformation can be laborious and bug-ridden, since the actual requirements can be very different. Importantly we'd ideally like each small step in the chain of these complex tasks to be available. 
 
+# PATH vs PRIMITIVE
+
+The path model is not unique to sf, and the primitive model is not unique to rgl, but they are both common enough that it's worthwhile to have a standard implementation. There's a bonus to a shared approach to, in that we can trivially convert a PATH to a PRIMITIVE model and vice versa. 
+
+There's still challenges in the road though because we need to use *relational indexes* (joins) to build objects that are *structurally indexed* (indexed by count). 
+
+```{r}
+P <- PRIMITIVE(minimal_mesh)
+
+```
 
 
 # Construction
